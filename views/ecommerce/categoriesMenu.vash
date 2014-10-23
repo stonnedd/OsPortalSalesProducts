@@ -1,0 +1,65 @@
+﻿@html.extend("/shared/layout", function(model){
+    @html.block("scripts", function(model){
+<link href="/css/blurMenu.css" rel="stylesheet">
+    })
+    @html.block("body", function(model){
+    <div ng-init='catImage = "@model.catImage"'>
+    <div class="heads" style="background: url(/images/category/{{catImage}}) center center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><span style="text-shadow: 2px 2px 4px #fff;">@model.title</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div>
+        @if(model.title!='Outlet'){
+        <ul class="BlurMenu">
+            <li ng-repeat="brand in brands" style="font-stretch:extra-condensed"><a href='/search/@model.title/brand/{{brand.name}}' style="font-size:small; font-stretch:narrower;" class="glyphicon glyphicon-chevron-right"> {{brand.name}} </a></li>
+        </ul>
+        }
+
+    </div>
+
+
+    <div ng-init='subCategories = [@model.subCategories]; brands = [@model.brands]'>
+        <div id="catalogue">
+            <div class="row">
+                <div class="col-sm-9">
+                    <ul>
+                        <li ng-repeat="subCategory in subCategories" class="col-md-3 col-sm-3">
+                            <div class="img-thumbnail">
+                                <a>
+                                    <img ng-src='/images/subCategory/{{subCategory.imgPath}}' height="200" width="200" alt="" />
+                                </a>
+                                <div class="caption-details">
+                                    <p>
+                                        <div class="btn-group">
+                                            <a href='/category/@model.title/{{subCategory.name}}' class="btn btn-primary"><i class="fa"></i> {{subCategory.name}}</a>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 col-sm-3">
+                    <div class="row sidebar">
+                        <div class="col-md-12">
+                            <h3><br />Productos <br />&nbsp;</h3>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li ng-repeat="subCategory in subCategories">
+                                    <a href='/category/@model.title/{{subCategory.name}}' style="text-align: left"> {{subCategory.name}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    })
+})

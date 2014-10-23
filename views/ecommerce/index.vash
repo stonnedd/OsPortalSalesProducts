@@ -1,0 +1,36 @@
+﻿@html.extend("/shared/layout", function(model){
+    @html.block("scripts", function(model){
+        <script src="/js/app/ecommerce/mainPageCtrl.js"></script>
+    })
+    @html.block("body", function(model){
+<div id="home" ng-controller="mainPageController" ng-init="banners=[@model.banners];">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li ng-repeat="banner in banners" data-target="#home-slider" data-slide-to="{{$index}}" ng-class="($index===0 ? 'active' : '')">
+            </li>
+        </ol>
+        <div class="carousel-inner">
+            <div ng-repeat="banner in banners" ng-class="($index===0 ? 'item active' : 'item')" ng-style="{'background': 'url(/images/banners/' + banner.image + ')'}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="carousel-content">
+                                <h2 class="animated fadeInUpBig text-center text-black" style="text-shadow: 2px 2px 4px #fff">{{banner.titleOne}}</h2>
+                                <p class="animated fadeInDownBig text-center">{{banner.titleTwo}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#home-slider" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right carousel-control" href="#home-slider" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+        <div class="pattern"></div>
+    </div>
+</div>
+    })
+})

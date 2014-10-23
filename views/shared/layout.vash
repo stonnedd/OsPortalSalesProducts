@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="Vandalos Skateboarding" content="width=device-width, initial-scale=1.0">
+    <meta name="Online Shop" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>Vandalos Skateboard</title>
+    <link rel="shortcut icon" href="/images/favicon.png">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/lib/angularjs/angular-csp.css" rel="stylesheet" />
+    @html.block("css")
+</head>
+<body ng-app="ecommerceApp" ng-cloak>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="menuController"
+         ng-init='categories = [@model.categories]'>
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Vandalos navigation</span>
+                    
+                </button>
+                <a class="navbar-brand visible-xs" href="#"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="category in categories">
+                        <a href="/category/{{category.name}}">{{category.name}}</a>
+                    </li>
+                </ul>
+                <a href="/index" class="logo visible-lg visible-lg"><img src="/images/logoVandalosOk.jpg" alt="Vandalos"></a>
+                <div id="brand" class="visible-lg visible-md">&nbsp;</div>
+                <ul class="nav navbar-nav nav-right">
+                    <li><a href="/outlet">OUTLET</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                    <li><a rel="tooltip" title="55 4067 1356" href="/contact" class="social-icon"> <img src="/images/whatsappLogo.png" alt="55 4067 135" width="25"></a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div>@html.block("body")</div>
+    <footer>
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Vandalos Skateboard</h3>
+                        <p>Keep on Rollin!</p>
+                        <ul class="list-unstyled social-icon">
+                            <li><a href="https://www.facebook.com/vandalos.skateboard" rel="tooltip" title="Facebook" class="icon-facebook"><span><i class="fa fa-facebook-square"></i></span></a></li>
+                            <li><a href="https://twitter.com/vandalosk8" rel="tooltip" title="Twitter" class="icon-twitter"><span><i class="fa fa-twitter"></i></span></a></li>
+                            <li><a href="https://plus.google.com/u/0/+vandalosskateboardTlalnepantla/posts" rel="tooltip" title="google +" class="icon-gplus"><span><i class="fa fa-google-plus"></i></span></a></li>
+                            <li><a href="#" rel="tooltip" title="Instagram" class="icon-instagram"><span><i class="fa fa-instagram"></i></span></a></li>
+
+                        </ul>
+                        <div class="sitemap">
+                            <ul>
+                                <li><a href="/index">HOME</a></li>
+                                <li><a href="/contact">CONTACT</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- begin:copyright -->
+    <div id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Powered by Idra Soft S.A. de C.V. 2014 </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=esp"></script>
+    <script src="/js/gmap3.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/lib/angularjs/angular.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/app/shared/ecommerceApp.js"></script>
+    <script src="/js/app/shared/menuCtrl.js"></script>
+    <script src="/js/app/ecommerce/productsCtrl.js"></script>
+    <script src="/js/app/ecommerce/categoriesMenuCtrl.js"></script>
+    <script src="/lib/angular/angular.js" charset="utf-8"></script>
+    <script src="/lib/angular-upload/angular-upload.js"></script>
+
+    @html.block("scripts")
+</body>
+</html>
