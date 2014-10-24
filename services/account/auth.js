@@ -7,8 +7,8 @@ var auth = {};
 auth.registerAdmin = function () {
     var salt = hasher.createSalt();
     var user = new UserModel({        
-        username : 'administrator',
-        passwordHash: hasher.computeHash("admin123", salt),
+        username : 'Fabian',
+        passwordHash: hasher.computeHash("1Vandalosk8", salt),
         salt: salt,
         fullName: 'Administrador principal'
     });

@@ -1,5 +1,4 @@
-﻿
-/**
+﻿/**
  * Module dependencies.
  */
 var express = require('express');
@@ -14,12 +13,13 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+app.set('port', server_port);
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'vash');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -28,25 +28,20 @@ app.use(express.urlencoded());
 app.use(express.cookieParser());
 app.use(express.session({ secret: "keyboard cat" }));
 app.use(express.bodyParser());
+console.log(__dirname);
 ctrlAccount.init(app);
 app.use(express.methodOverride());
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+
 var dbName = 'Ecommerce';
 
-mongodb_connection_string = 'mongodb://localhost/' + dbName;
+//mongodb_connection_string = 'mongodb://localhost/' + dbName;
 
-if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
-}
+//if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+//    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+//}
 
-mongoose.connect(mongodb_connection_string);
+mongoose.connect('mongodb://admin:XZLnPXzytFrK@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/vandalos');
 
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 
 ctrlEcommerce.init(app);
 svcDatabase.init(app);
@@ -58,12 +53,11 @@ app.use(function(req, res) {
 });
 
 
-
-server.listen(server_port, server_ip_address, function () {
-    console.log("Listening on " + server_ip_address + ", server_port " + port)
+app.listen(server_port, server_ip_address, function () {
+    console.log("Listening on " + server_ip_address + ", server_port " + server_port);
 });
 
 /*
-http.createServer(app).listen(app.get('port'), function (){
-  console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(server_port, function (){
+  console.log('Express server listening on port ' + server_port);
 });*/

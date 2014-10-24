@@ -7,10 +7,8 @@ emailService.sendConfirmation = function(params, product, next) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            //user: 'vandalosk8@gmail.com',
-            //pass: 'vandalos'
-            user: 'yonadab.lopez@gmail.com',
-            pass: 'essecreta1'
+            user: 'vandalosk8@gmail.com',
+            pass: 'vandalos'
         }
     });
     
